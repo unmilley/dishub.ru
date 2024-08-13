@@ -8,12 +8,14 @@ try {
       'powershell -Command "(Get-Content .\\node_modules\\.pnpm\\node_modules\\@iconify\\utils\\package.json) | Where-Object {$_ -notmatch \'"\\\\./\\\\*": "\\\\./\\\\*",\' } | Set-Content .\\node_modules\\.pnpm\\node_modules\\@iconify\\utils\\package.json"',
       { stdio: 'inherit' }
     )
-    execSync('echo win:OK', { stdio: 'inherit' })
+    execSync('powershell -Command Write-Host " win:OK " -ForegroundColor DarkGreen -BackgroundColor White', {
+      stdio: 'inherit',
+    })
   } else {
     execSync('sed -i \'/"\\.\\/\\*": "\\.\\/\\*",/d\' ./node_modules/.pnpm/node_modules/@iconify/utils/package.json', {
       stdio: 'inherit',
     })
-    execSync('echo linux/mac:OK', { stdio: 'inherit' })
+    execSync('printf "\\e[32;47m linux/mac:OK \\e[0m"\n', { stdio: 'inherit' })
   }
 
   execSync('nuxt prepare', { stdio: 'inherit' })
