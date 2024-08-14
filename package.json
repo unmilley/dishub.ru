@@ -23,7 +23,13 @@
     "@nuxt/icon": "^1.4.5",
     "@nuxt/image": "^1.7.0",
     "@nuxtjs/color-mode": "^3.4.2",
+    "@vee-validate/nuxt": "^4.13.2",
+    "@vee-validate/valibot": "^4.13.2",
     "@vueuse/core": "^10.11.1",
-    "@vueuse/nuxt": "^10.11.1"
+    "@vueuse/nuxt": "^10.11.1",
+    "firebase": "^10.12.5",
+    "firebase-admin": "^12.3.1",
+    "valibot": "^0.37.0",
+    "vee-validate": "^4.13.2"
   }
 }
