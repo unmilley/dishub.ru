@@ -29,6 +29,7 @@ export default defineNuxtConfig({
   icon: {
     collections: ['bx', 'bxs', 'ph'],
     mode: 'svg',
+    customCollections: [{ prefix: 'mill', dir: './assets/icons' }],
   },
 
   devServer,

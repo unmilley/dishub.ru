@@ -13,6 +13,9 @@
     "postinstall": "node prebuild.js"
   },
   "devDependencies": {
+    "@iconify-json/ph": "^1.1.14",
+    "@iconify-json/bx": "^1.1.11",
+    "@iconify-json/bxs": "^1.1.11",
     "@nuxt/devtools": "latest",
     "@nuxtjs/tailwindcss": "^6.12.1",
     "daisyui": "^4.12.10",
