@@ -1,34 +1,44 @@
 import {
-  browserLocalPersistence,
   createUserWithEmailAndPassword,
   getAuth,
   onAuthStateChanged,
   sendEmailVerification,
-  setPersistence,
   signInWithEmailAndPassword,
   updateProfile,
   type User,
 } from 'firebase/auth'
 
+export type SignInCredential = {
+  email: string
+  password: string
+}
+
+export type SignUpCredential = SignInCredential & { username: string }
+
 export const useAuth = () => {
   const user = useState<User | null>('userStore', () => null)
 
   useFirebase()
+  const { userDB } = useDatabase()
 
   const auth = getAuth()
 
-  const login = async (_arg0: any) => {
-    await setPersistence(auth, browserLocalPersistence)
-    const data = await signInWithEmailAndPassword(auth, _arg0.email, _arg0.password)
+  // const { $auth: auth } = useNuxtApp()
+
+  const login = async ({ email, password }: SignInCredential) => {
+    const data = await signInWithEmailAndPassword(auth, email, password)
 
     user.value = data.user
     const token = await data.user.getIdToken()
     await serverAuth(token)
   }
-  const signUp = async (_arg0: any) => {
-    await setPersistence(auth, browserLocalPersistence)
-    const data = await createUserWithEmailAndPassword(auth, _arg0.email, _arg0.password)
-    await updateProfile(data.user, { displayName: _arg0.username })
+  const signUp = async ({ email, password, username }: SignUpCredential) => {
+    const data = await createUserWithEmailAndPassword(auth, email, password)
+    await updateProfile(data.user, {
+      displayName: username,
+      photoURL: `https://avatar.iran.liara.run/username?username=${username}`,
+    })
+    await userDB.set(data.user)
     await sendEmailVerification(data.user)
     user.value = data.user
     const token = await data.user.getIdToken()
@@ -54,8 +64,11 @@ export const useAuth = () => {
     }
   }
 
-  onAuthStateChanged(auth, (userDetails) => {
+  onAuthStateChanged(auth, async (userDetails) => {
     user.value = userDetails
+
+    if (userDetails) userDB.get(userDetails.uid)
+    else userDB.user.value = null
   })
   return { user, login, signUp, logout }
 }
