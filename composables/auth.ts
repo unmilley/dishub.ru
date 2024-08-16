@@ -18,6 +18,8 @@ export type SignUpCredential = SignInCredential & { username: string }
 export const useAuth = () => {
   const user = useState<User | null>('userStore', () => null)
 
+  const isUser = computed(() => !!user.value)
+
   useFirebase()
   const { userDB } = useDatabase()
 
@@ -70,5 +72,5 @@ export const useAuth = () => {
     if (userDetails) userDB.get(userDetails.uid)
     else userDB.user.value = null
   })
-  return { user, login, signUp, logout }
+  return { user, isUser, login, signUp, logout }
 }
