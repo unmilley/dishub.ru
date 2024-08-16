@@ -7,7 +7,6 @@
 
   <NuxtLayout>
     <NuxtPage
-      :page-key="($route) => $route.fullPath"
       :transition="{
         name: 'page',
         mode: 'out-in',
@@ -18,7 +17,7 @@
 
 <script setup lang="ts">
 useHead({
-  titleTemplate: (titleChunk) => (titleChunk ? `${titleChunk} | Dishub` : 'Dishub'),
+  titleTemplate: (titleChunk) => (titleChunk ? `${titleChunk} · Dishub` : 'Dishub'),
 })
 </script>
 
