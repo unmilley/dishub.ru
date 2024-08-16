@@ -2,7 +2,7 @@
   <button
     :title="n.title"
     :class="{ 'text-primary dark:text-white transition-colors ': active, hidden: !n.isVisible }"
-    @click="typeof n.path === 'string' ? n.action(n.path === 'menu' ? 'menu-temp' : n.path) : n.action()"
+    @click="typeof n.path === 'undefined' ? n.action() : n.action(n.path)"
     class="transition-colors"
     type="button"
   >

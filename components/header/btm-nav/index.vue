@@ -26,7 +26,7 @@ const navigation = computed((): Navigation[] => [
     title: 'Записать',
     icon: 'ph:plus-circle',
     path: 'record',
-    isVisible: !isUser.value,
+    isVisible: isUser.value,
     action: (p: string) => push({ name: p }),
   },
   {

@@ -1,9 +1,8 @@
 <template>
   <NuxtLayout :name="layout">
-    <div>
-      <p>Default</p>
+    <main>
       <slot />
-    </div>
+    </main>
   </NuxtLayout>
 </template>
 
