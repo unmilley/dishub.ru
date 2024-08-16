@@ -1,3 +1,4 @@
+import { pwa } from './src/pwa'
 const devServer = { https: true }
 
 export default defineNuxtConfig({
@@ -10,6 +11,7 @@ export default defineNuxtConfig({
     '@nuxtjs/color-mode',
     '@nuxt/image',
     '@vee-validate/nuxt',
+    '@nuxtjs/device',
   ],
   tailwindcss: {
     cssPath: ['@/assets/css/tailwind.css', { injectPosition: 'first' }],
@@ -23,6 +25,7 @@ export default defineNuxtConfig({
     dataValue: 'theme',
     storageKey: 'theme',
   },
+  device: { refreshOnResize: true },
 
   vite: { optimizeDeps: { exclude: ['vee-validate'] } },
 
@@ -30,6 +33,14 @@ export default defineNuxtConfig({
     collections: ['bx', 'bxs', 'ph'],
     mode: 'svg',
     customCollections: [{ prefix: 'mill', dir: './assets/icons' }],
+  },
+
+  app: {
+    head: {
+      htmlAttrs: { dir: 'ltr', lang: 'ru' },
+      link: [...pwa.link],
+      meta: [...pwa.meta],
+    },
   },
 
   devServer,
