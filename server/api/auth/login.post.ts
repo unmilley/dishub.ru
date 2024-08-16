@@ -1,7 +1,7 @@
 import { getAuth } from 'firebase-admin/auth'
 
 export default defineEventHandler(async (event) => {
-  firebaseAdmin()
+  defineFirebaseAdmin(event)
 
   const { token } = await readBody<{ token: string }>(event)
   const expiresIn = 432e5 // 60 * 60 * 24 * 5 * 1000

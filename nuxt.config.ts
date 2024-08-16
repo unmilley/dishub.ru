@@ -1,4 +1,5 @@
 import { pwa } from './src/pwa'
+import { config } from './src/runtimeConfig'
 const devServer = { https: true }
 
 export default defineNuxtConfig({
@@ -41,6 +42,13 @@ export default defineNuxtConfig({
       link: [...pwa.link],
       meta: [...pwa.meta],
     },
+  },
+
+  runtimeConfig: {
+    public: {
+      fb: { ...config.public },
+    },
+    fbAdmin: { ...config.server },
   },
 
   devServer,
