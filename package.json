@@ -13,9 +13,9 @@
     "postinstall": "node prebuild.js"
   },
   "devDependencies": {
-    "@iconify-json/ph": "^1.1.14",
     "@iconify-json/bx": "^1.1.11",
     "@iconify-json/bxs": "^1.1.11",
+    "@iconify-json/ph": "^1.1.14",
     "@nuxt/devtools": "latest",
     "@nuxtjs/device": "^3.1.1",
     "@nuxtjs/tailwindcss": "^6.12.1",
@@ -26,13 +26,13 @@
   "dependencies": {
     "@nuxt/icon": "^1.4.5",
     "@nuxt/image": "^1.7.0",
-    "@nuxtjs/color-mode": "^3.4.2",
+    "@nuxtjs/color-mode": "^3.4.4",
     "@vee-validate/nuxt": "^4.13.2",
     "@vee-validate/valibot": "^4.13.2",
     "@vueuse/core": "^11.0.0",
     "@vueuse/nuxt": "^11.0.0",
     "@vueuse/router": "^11.0.0",
-    "firebase": "^10.13.0",
+    "firebase": "^10.12.5",
     "firebase-admin": "^12.3.1",
     "valibot": "^0.37.0",
     "vee-validate": "^4.13.2"
