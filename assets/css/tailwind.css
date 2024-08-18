@@ -40,4 +40,12 @@
 }
 
 @layer utilities {
+  .tooltip-base-100 {
+    --tooltip-color: var(--fallback-b1, oklch(var(--b1) / 1));
+    --tooltip-text-color: var(--fallback-bc, oklch(var(--bc) / 1));
+  }
+  .tooltip-base-200 {
+    --tooltip-color: var(--fallback-b2, oklch(var(--b2) / 1));
+    --tooltip-text-color: var(--fallback-bc, oklch(var(--bc) / 1));
+  }
 }
