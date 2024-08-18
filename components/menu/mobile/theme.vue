@@ -1,24 +1,23 @@
 <template>
   <menu-mobile title="Цветовая схема" icon="mill:palette">
     <client-only fallback-tag="div">
-      <details class="dropdown" ref="details">
-        <summary class="btn btn-outline no-animation w-full justify-start">
-          <Icon :name="activeTheme.icon" /> {{ activeTheme.title }}
-        </summary>
-
-        <ul class="dropdown-content menu bg-base-200 rounded-b-btn divide-y divide-base-content">
-          <li v-for="(t, value) in themes" :key="t.title">
-            <button
-              type="button"
-              class="btn rounded-none justify-start"
-              :class="{ 'text-primary dark:text-white': $colorMode.preference === value }"
-              @click="changeTheme(value)"
-            >
-              <Icon :name="t.icon" /> {{ t.title }}
-            </button>
-          </li>
-        </ul>
-      </details>
+      <ui-dropdown
+        summary-class="btn btn-outline no-animation w-full justify-start"
+        content-class="menu bg-base-200 rounded-b-btn divide-y divide-base-content"
+        tag="ul"
+      >
+        <template #summary><Icon :name="activeTheme.icon" /> {{ activeTheme.title }}</template>
+        <li v-for="(t, value) in themes" :key="t.title">
+          <button
+            type="button"
+            class="btn rounded-none justify-start"
+            :class="{ 'text-primary dark:text-white': $colorMode.preference === value }"
+            @click="changeTheme(value)"
+          >
+            <Icon :name="t.icon" /> {{ t.title }}
+          </button>
+        </li>
+      </ui-dropdown>
       <template #fallback>
         <div class="btn btn-outline no-animation w-full justify-start">
           <span class="loading-spinner"></span>

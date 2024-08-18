@@ -13,4 +13,5 @@
 
 <script lang="ts" setup>
 const { localSetting } = useUnState()
+/* TODO: Убрать hover на input */
 </script>

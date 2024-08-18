@@ -5,8 +5,7 @@
       <ui-dropdown
         align-end
         summary-class="btn btn-circle btn-ghost btn-xs text-info"
-        content-class="card compact bg-base-300/75 backdrop-blur-md rounded-box z-[1] w-64 shadow "
-        force-open
+        content-class="card compact bg-base-300/75 backdrop-blur-md rounded-box z-[1] w-64 shadow"
       >
         <template #summary><Icon name="ph:info" size="1.25rem" /></template>
         <div class="card-body">
