@@ -4,7 +4,7 @@
 
     <slot />
 
-    <header-btm-nav />
+    <header-mobile-btm-nav />
   </div>
 </template>
 
