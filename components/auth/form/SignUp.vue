@@ -55,31 +55,13 @@
 </template>
 
 <script lang="ts" setup>
-import { toTypedSchema } from '@vee-validate/valibot'
-import { email, minLength, nonEmpty, object, pipe, string } from 'valibot'
+import { RegisterSchema } from '@/src/validation'
 const { handleSignUp } = useAuth()
 
 const isHidePasswd = ref(false)
 
-const { meta, handleSubmit, isSubmitting } = useForm({
-  validationSchema: toTypedSchema(
-    object({
-      username: pipe(
-        string('Пожалуйста, введите ваше имя.'),
-        minLength(1, 'Пожалуйста, введите ваше имя.'),
-        minLength(4, 'Ваше имя должен состоять из 4 символов или более.')
-      ),
-      email: pipe(
-        string('Пожалуйста, введите свой адрес электронной почты.'),
-        nonEmpty('Пожалуйста, введите свой адрес электронной почты.'),
-        email('Пожалуйста, введите свой адрес электронной почты.')
-      ),
-      password: pipe(
-        string('Пожалуйста, введите пароль.'),
-        minLength(6, 'Ваш пароль должен состоять из 6 и более символов')
-      ),
-    })
-  ),
+const { meta, handleSubmit, isSubmitting } = useForm<SignUpCredential>({
+  validationSchema: RegisterSchema,
   initialErrors: {
     username: 'Пожалуйста, введите ваше имя.',
     email: 'Пожалуйста, введите свой адрес электронной почты.',

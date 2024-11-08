@@ -1,6 +1,6 @@
+import { devServer } from './.temp/dev'
 import { pwa } from './src/pwa'
 import { config } from './src/runtimeConfig'
-const devServer = { https: true }
 
 export default defineNuxtConfig({
   compatibilityDate: '2024-08-13',
@@ -13,6 +13,7 @@ export default defineNuxtConfig({
     '@nuxt/image',
     '@vee-validate/nuxt',
     '@nuxtjs/device',
+    '@nuxtjs/seo',
   ],
   tailwindcss: {
     cssPath: ['@/assets/css/tailwind.css', { injectPosition: 'first' }],
@@ -26,7 +27,6 @@ export default defineNuxtConfig({
     dataValue: 'theme',
     storageKey: 'theme',
   },
-  device: { refreshOnResize: true },
 
   vite: { optimizeDeps: { exclude: ['vee-validate'] } },
 
@@ -39,6 +39,7 @@ export default defineNuxtConfig({
   app: {
     head: {
       htmlAttrs: { dir: 'ltr', lang: 'ru' },
+      titleTemplate: '%s %separator %siteName',
       link: [...pwa.link],
       meta: [...pwa.meta],
     },
@@ -49,6 +50,10 @@ export default defineNuxtConfig({
       fb: { ...config.public },
     },
     fbAdmin: { ...config.server },
+  },
+  site: {
+    description:
+      'Ежедневные рецепты с отзывами и оценками от домашних поваров. Идеи для быстрого ужина, полезные рецепты и ценные кулинарные советы, которые помогут готовить вкусно и легко.',
   },
 
   devServer,

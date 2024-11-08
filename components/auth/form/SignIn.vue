@@ -51,26 +51,13 @@
 </template>
 
 <script lang="ts" setup>
-import { toTypedSchema } from '@vee-validate/valibot'
-import { email, minLength, nonEmpty, object, pipe, string } from 'valibot'
+import { LoginSchema } from '@/src/validation'
 
 const { handleSignIn } = useAuth()
 const isHidePasswd = ref(false)
 
-const { meta, handleSubmit, isSubmitting } = useForm({
-  validationSchema: toTypedSchema(
-    object({
-      email: pipe(
-        string('Пожалуйста, введите свой адрес электронной почты.'),
-        nonEmpty('Пожалуйста, введите свой адрес электронной почты.'),
-        email('Пожалуйста, введите свой адрес электронной почты.')
-      ),
-      password: pipe(
-        string('Пожалуйста, введите пароль.'),
-        minLength(6, 'Ваш пароль должен состоять из 6 и более символов')
-      ),
-    })
-  ),
+const { meta, handleSubmit, isSubmitting } = useForm<SignInCredential>({
+  validationSchema: LoginSchema,
   initialErrors: {
     email: 'Пожалуйста, введите свой адрес электронной почты.',
     password: 'Пожалуйста, введите пароль.',

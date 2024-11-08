@@ -16,9 +16,10 @@
 </template>
 
 <script setup lang="ts">
-useHead({
-  titleTemplate: (titleChunk) => (titleChunk ? `${titleChunk} · Dishub` : 'Dishub'),
-})
+// useHead({
+//   titleTemplate: (titleChunk) => (titleChunk ? `${titleChunk} · Dishub` : 'Dishub'),
+// })
+useHead({ templateParams: { separator: '•' } })
 </script>
 
 <style>
