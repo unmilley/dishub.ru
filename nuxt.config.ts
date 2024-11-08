@@ -1,4 +1,4 @@
-import { devServer } from './.temp/dev'
+const devServer = { https: true }
 import { pwa } from './src/pwa'
 import { config } from './src/runtimeConfig'
 
